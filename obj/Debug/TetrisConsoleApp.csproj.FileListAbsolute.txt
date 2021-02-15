@@ -1,0 +1,7 @@
+D:\Projects\Csharp\TetrisConsoleApp\bin\Debug\TetrisConsoleApp.exe.config
+D:\Projects\Csharp\TetrisConsoleApp\bin\Debug\TetrisConsoleApp.exe
+D:\Projects\Csharp\TetrisConsoleApp\bin\Debug\TetrisConsoleApp.pdb
+D:\Projects\Csharp\TetrisConsoleApp\obj\Debug\TetrisConsoleApp.csprojAssemblyReference.cache
+D:\Projects\Csharp\TetrisConsoleApp\obj\Debug\TetrisConsoleApp.csproj.CoreCompileInputs.cache
+D:\Projects\Csharp\TetrisConsoleApp\obj\Debug\TetrisConsoleApp.exe
+D:\Projects\Csharp\TetrisConsoleApp\obj\Debug\TetrisConsoleApp.pdb
