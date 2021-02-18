@@ -15,6 +15,8 @@ namespace TetrisConsoleApp
             int InformationCols = 11;
 
             Window game = new Window(GameRows, GameCols, '@', InformationCols);
+            GameInputManager inputManager = new GameInputManager();
+            ScoreManager scoreManager = new ScoreManager("scores.txt");
             while (true) ;
         }    
 
