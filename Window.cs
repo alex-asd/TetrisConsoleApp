@@ -15,6 +15,9 @@ namespace TetrisConsoleApp
         private int consoleCols;
         private char gameCharacter;
 
+        public int Frame { get; set; }
+        public int FramesToMoveFigure { get; private set; }
+
         public Window(int gameRows, int gameCols, char gameCharacter, int informationCols)
         {
             this.gameRows = gameRows;
@@ -25,16 +28,20 @@ namespace TetrisConsoleApp
             this.consoleRows = this.gameRows + 2;
             this.consoleCols = this.gameCols + this.informationCols + 3;
 
-            Console.Title = "Tetris v1.0";
+            this.Frame = 0;
+            this.FramesToMoveFigure = 15;
+
+            Console.Title = "Tetris";
             Console.WindowHeight = this.consoleRows + 1;
             Console.BufferHeight = this.consoleRows + 1;
             Console.WindowWidth = this.consoleCols;
-            Console.BufferWidth = this.consoleCols;
+            Console.BufferWidth = this.consoleCols; 
             Console.CursorVisible = false;
-            DrawBorder();
+            DisplayBorder();
+            DisplayGameInfo(gameCols + 3);
         }
 
-        public void DrawBorder()
+        public void DisplayBorder()
         {
             Console.SetCursorPosition(0, 0);
             string line = "╔";
@@ -45,7 +52,7 @@ namespace TetrisConsoleApp
             line += "╗";
             Console.Write(line);
 
-            for (int i = 0; i < this.gameCols; i++)
+            for (int i = 0; i < this.gameRows; i++)
             {
                 string middleLine = "║";
                 middleLine += new string(' ', this.gameCols);
@@ -63,10 +70,39 @@ namespace TetrisConsoleApp
             Console.Write(endLine);
         }
 
-        public void Write(string text, int row, int col)
+        private void Write(string text, int row, int col)
         {
             Console.SetCursorPosition(col, row);
             Console.Write(text);
+        }
+
+        public void DisplayGameInfo(int position)
+        {
+            // Hardcode values for testing the display
+            Write("Level:", 1, position);
+            Write("0", 2, position);
+            Write("Score:", 1, position);
+            Write("0", 2, position);
+            Write("Best:", 7, position);
+            Write("1000", 8, position);
+            Write("Keys:", 16, position);
+            Write($"  ^ ", 18, position);
+            Write($"<   > ", 19, position);
+            Write($"  v  ", 20, position);
+        }
+
+        public void DrawCurrentFigure(Tetromino currentFigure, int currentFigureRow, int currentFigureColumn)
+        {
+            for (int row = 0; row < currentFigure.Width; row++)
+            {
+                for (int col = 0; col < currentFigure.Height; col++)
+                {
+                    if(currentFigure.Body[row, col])
+                    {
+                        Write("*", row + 1, col + 1);
+                    }
+                }
+            }
         }
     }
 }
